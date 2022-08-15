@@ -2,63 +2,55 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-nati
 import React from 'react';
 import firebase from 'firebase/app';
 import "firebase/auth";
-import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 
 
 const Main_profile = ({navigation}) => {
   return (
     <View style={styles.Container}>
-    <Text style={styles.Top}> 프로필 
-    <View style={styles.settings}>
-    <TouchableOpacity onPress={() => navigation.navigate("프로필 설정")}> 
-    <MaterialIcons name="settings" size={40} color="black" /> 
-    </TouchableOpacity>
-    </View>
-    </Text> 
-    
+      <View style={styles.Container2}>
+        <Text style={styles.Top}> 프로필 </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("프로필 설정")}> 
+        <Ionicons style={styles.Top} name="md-settings-outline" size={24} color="black" />
+        </TouchableOpacity>     
+      </View>
 
+      <View style={styles.Middle}>
+      <FontAwesome name="user-circle-o" size={70} color="black" />
+      <View style={styles.Middle2}>
 
-    <View style={styles.Profile}> 
-    <FontAwesome name="user" size={50} color="black" />
-    
-    <Text> 학번 </Text>
-    <Text> 이름 </Text>
-    <Text> 이메일 </Text>
-    <TouchableOpacity onPress={() => navigation.navigate("개인정보 수정")} style={styles.settings}> 
-    <Feather name="edit-3" size={24} color="black" />
-    </TouchableOpacity>
-    </View>
-
-    
-    <View style={styles.Container}></View>
-
-    <Text style={styles.Middle1}>내 게시글</Text>
-    <TouchableOpacity onPress={() => navigation.navigate("내 게시글")} >
-    <Text style={styles.Middle2}> 제목 </Text>
-      </TouchableOpacity>
-
-      <Text style={styles.Middle1}>내 채팅방</Text>
-    <TouchableOpacity onPress={() => navigation.navigate("내 채팅방")} >
-
-    <Text style={styles.Middle2}> 제목 </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => navigation.navigate("이용 제한 내역")} >
-
-    <Text style={styles.Middle1}> </Text>
-    <Text style={styles.Middle2}> 이용 제한 내역 </Text>
-      </TouchableOpacity>
-
-
-      {/* <TouchableOpacity
-      style={styles.customBtn}
-      onPress={()=> firebase.auth().signOut()}
-      >
-      <Text style={{ color: '#000000', fontSize: 24, fontFamily:'NanumGothicBold' }}>로그아웃</Text>
-      </TouchableOpacity> */}
+      <Text> 학번 : 
+      <TouchableOpacity onPress={() => navigation.navigate("개인정보 수정")}> 
+      <Feather style={styles.Edit} name="edit-3" size={24} color="black" /> 
+      </TouchableOpacity> 
+      </Text>  
+      <Text > 이름 : </Text>
+      <Text> 이메일 : </Text>
+      </View>
+      </View>
       
+      <View style={styles.Middle3}>
+      <Text style={styles.fontFamily}>내 게시글 </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("내 게시글")} >
+      <Text> 제목 </Text>
+      </TouchableOpacity>
+
+      <View style={styles.Middle3}>
+      <Text style={styles.fontFamily}>내 채팅방 </Text>
+      <TouchableOpacity onPress={() => navigation.navigate("내 채팅방")} >
+      <Text> 제목 </Text>
+      </TouchableOpacity>
+
+      <View style={styles.Middle3}>
+      <TouchableOpacity onPress={() => navigation.navigate("이용 제한 내역")} >
+      <Text style={styles.fontFamily}>이용 제한 내역 </Text> 
+      </TouchableOpacity>
+      </View> 
+
+      </View> 
+      </View>
     </View>
   )
 }
@@ -66,71 +58,52 @@ const Main_profile = ({navigation}) => {
 export default Main_profile
 
 const styles = StyleSheet.create({
-  // customBtn:{
-  //   backgroundColor: '#D9D9D9',
-  //   padding: 15,
-  //   margin: 20,
-  //   marginTop: 550,
-  //   borderRadius: 10,
-  //   alignItems:"center"
-  // },
-  Top: {
-    marginTop: 15,
-    justifyContent:"center",
-    alignItems:"center", 
-    
-  },
 
   Container: {
-    backgroundColor:"000000",
-  },
-
-  Container2: {
-    backgroundColor:"000000",
-    marginTop: 30,
-    alignItems:"center", 
-    flexDirection: 'center',
-  },
-
-  textContainerss: {
-    height:50,
-    borderColor:'#999999',
-    backgroundColor:"#FFFFFF",
-    borderWidth:2,
-    borderRadius:10,
-    margin:10,
+  backgroundColor:"000000",
+   marginLeft:30,
     
   },
-  settings:{
-    justifyContent:"space-around",
-      flexDirection: 'row',
+
+  Container2:{
+    flexDirection: 'row', 
   },
 
-  Middle1:{
+
+  Top: {
+    marginTop: 30,
+    marginLeft:110,
+    fontSize: 30,
     fontFamily: 'NanumGothicBold',
-    marginLeft:30,
-    fontSize:20,
+  },
+
+  Middle: {
+    marginTop: 80, 
+    flexDirection: 'row', 
+    fontFamily: 'NanumGothicBold',
+    
+  },
+
+  Middle2: {
+   justifyContent:"center",
+   marginLeft: 10,
+   fontFamily: 'NanumGothicBold',
+  
+  },
+
+  Middle3:{
     marginTop:50,
   },
 
-  Middle2:{
-    marginLeft:30,
-    marginTop:5,
-    fontSize:15,
-  },
-
-  Profile: {
-    marginLeft:30,
-    marginTop:30,
-    alignItems:"center", 
-    flexDirection: 'row',
-    
-  },
-
-  Top: {
-    fontSize:30,
-    marginLeft: 15,
-    marginTop:30,
+  fontFamily: {
+    margintop:30,
     fontFamily: 'NanumGothicBold',
+    fontSize:20,
   },
+  
+
+  Edit:{
+  marginLeft:220,
+  },
+
 })
